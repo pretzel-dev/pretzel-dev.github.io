@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="./styles.css" rel="stylesheet">
+    <script src="./general.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="title">
+            <h1 class="titleh1">Pretzel</h1>
+            <p class="titlep">Web & Game</p>
+            <p class="titlep">Developer</p>
+        </div>
+    </header>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/102/three.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+    <script src="https://jeremyckahn.github.io/keydrown/dist/keydrown.js"></script>
+    <script src="https://jeremyckahn.github.io/keydrown/dist/keydrown.min.js"></script>
+
+    <script>
+        //Set up the scene
+
+        var scene = new THREE.Scene();
+
+        var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.y = 1.5;
+        camera.rotation.x = -0.1;
+
+        var renderer = new THREE.WebGLRenderer();
+        renderer.setClearColor('#E4F0F0');
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+
+
+        var geometry = new THREE.BoxGeometry(1, 1, 1)
+
+        var materialCube = new THREE.MeshLambertMaterial({
+            color: '#497070'
+        });
+
+        var CubeMesh = new THREE.Mesh(geometry, materialCube);
+
+        scene.add(CubeMesh);
+
+
+        CubeMesh.position.y = 2
+
+
+        //Resize
+
+
+        window.addEventListener('resize', () => {
+            renderer.setSize(window.innerWidth, window.innerHeight)
+            camera.aspect = window.innerWidth / window.innerHeight
+
+            camera.updateProjectionMatrix();
+        });
+
+        //Render + Light
+
+        var light = new THREE.PointLight(0xFFFFFF, 1, 500);
+        light.position.set(10, 10, 25);
+        scene.add(light);
+
+        function animate() {
+            requestAnimationFrame(animate);
+            renderer.render(scene, camera);
+            CubeMesh.rotation.x += 0.01
+            CubeMesh.rotation.y += 0.01
+            CubeMesh.rotation.z += 0.01
+
+        }
+        animate();
+
+        camera.position.z = 5;
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+.titleh1 {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 7vh;
+    margin-bottom: 2.5vh;
+    color: #6B7070;
+}
+
+.titlep {
+    font-family: 'Quicksand', sans-serif;
+    margin-top: 0;
+    font-size: 3vh;
+    color: #497070;
+}
+
+.title {
+    text-align: center;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    background-color: #E4F0F0;
+    overflow: hidden;
+}
+
+canvas {
+    display: block;
+}
